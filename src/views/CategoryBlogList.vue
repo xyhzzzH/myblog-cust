@@ -16,7 +16,7 @@
       </div>
       <div class="blog-list">
         <div class="blog-item"
-             v-for="(item, index) in blogDataInfo.list">
+             v-for="(item, index) in blogDataInfo.list" :key="index">
           <div class="blog-cover">
             <img :src="proxy.globalInfo.getImageUrl + item.cover"
                  v-if="item.cover" />
@@ -54,7 +54,7 @@
                      class="more">更多&gt;&gt;</router-link>
       </div>
       <!--博客分类-->
-      <div v-for="(item, index) in categoryList">
+      <div v-for="item in categoryList" :key="item.categoryId">
         <router-link :to="'../category/'+item.categoryId"
                      class="category-item">
           <span class="category-icon">

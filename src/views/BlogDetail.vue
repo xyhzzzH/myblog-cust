@@ -33,7 +33,7 @@
               <div class="no-data">未解析到目录</div>
             </template>
             <template v-else>
-              <div v-for="item in tocArray">
+              <div v-for="item in tocArray" :key="item.id">
                 <a :href="'#'+item.id"
                    class="toc-item"
                    :style="{'padding-left':(item.level*15)+'px'}">{{item.title}}
@@ -47,7 +47,7 @@
             <a href="../category.html"
                class="more">更多&gt;&gt;</a>
           </div>
-          <div v-for="(item, index) in categoryList">
+          <div v-for="(item, index) in categoryList" :key="index">
             <a href="category/10000.html"
                class="category-item">
               <span class="category-icon">
@@ -163,8 +163,7 @@ const highlightCode = () => {
 const marginTop = ref(0);
 onMounted(() => {
   window.addEventListener('scroll', () => {
-    //var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-    // marginTop.value = scrollTop;
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
   })
 })
 </script>
@@ -174,13 +173,12 @@ onMounted(() => {
   display: flex;
   position: relative;
   .right {
-    margin-left: 0px;
-    top: 90px;
-    padding-top: 0px;
     position: fixed;
+    width: 320px;
+    padding: 0px 10px 10px 10px;
+    border-radius: 10px;
     .container {
-      width: 300px;
-      padding: 0px 10px 10px 10px;
+      width: 100%;
       background: #fff;
       .toc-list {
         max-height: 400px;

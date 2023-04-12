@@ -2,59 +2,69 @@
   <div class="home-body">
     <div class="container">
       <div class="blog-list">
-        <div class="blog-item"
-             v-for="(item, index) in blogDataInfo.list">
+        <div
+          class="blog-item"
+          v-for="(item, index) in blogDataInfo.list"
+          :key="index"
+          @click="routeToBlog(item.blogId)"
+        >
           <div class="blog-cover">
-            <img :src="proxy.globalInfo.getImageUrl + item.cover"
-                 v-if="item.cover" />
-            <img src="@/assets/default_img.png"
-                 v-else />
+            <img
+              :src="proxy.globalInfo.getImageUrl + item.cover"
+              v-if="item.cover"
+            />
+            <img src="@/assets/default_img.png" v-else />
           </div>
           <div class="blog-item-content">
             <div class="title">
-              <router-link :to="'blog/' + item.blogId">{{
-              item.title
-            }}</router-link>
+              {{ item.title }}
             </div>
-            <div class="blog-summary">{{ item.summary }}</div>
             <div class="blog-info">
-              <div class="create-time">{{ item.createTime }}</div>
-              <div class="nick-name">
-                作者：<router-link :to="'user#'+item.userId">{{ item.nickName }}</router-link>
+              <span class="iconfont icon-riqi"></span>
+              <div class="create-time">
+                &nbsp;{{ item.createTime }}&nbsp;&nbsp;|
               </div>
               <div class="nick-name">
-                分类专栏：
-                <router-link :to="'category/'+item.categoryId"
-                             v-if="item.categoryId">{{item.categoryName}}</router-link>
+                <span class="iconfont icon-zuozhe"></span>
+                作者：<span>{{ item.nickName }}&nbsp;&nbsp;|</span>
+              </div>
+              <div class="nick-name">
+                <span class="iconfont icon-zhuanti"></span>
+                分类：
+                <span v-if="item.categoryId">{{ item.categoryName }}</span>
                 <span v-else>全部</span>
               </div>
             </div>
+            <div class="blog-summary">{{ item.summary }}</div>
           </div>
         </div>
-        <Pagination :total="blogDataInfo.totalCount"
-                    :pageSize="blogDataInfo.pageSize"
-                    :pageNo="blogDataInfo.pageNo"
-                    @pageChange="pageChange4BlogList"></Pagination>
+
+        <Pagination
+          :total="blogDataInfo.totalCount"
+          :pageSize="blogDataInfo.pageSize"
+          :pageNo="blogDataInfo.pageNo"
+          @pageChange="pageChange4BlogList"
+        ></Pagination>
       </div>
     </div>
     <div class="right">
       <div class="right-title">
         <span>分类专栏</span>
-        <router-link to="/category"
-                     class="more">更多&gt;&gt;</router-link>
+        <router-link to="/category" class="more">更多&gt;&gt;</router-link>
       </div>
       <!--博客分类-->
-      <div v-for="(item, index) in categoryList">
-        <router-link :to="'category/'+item.categoryId"
-                     class="category-item">
+      <div v-for="item in categoryList" :key="item.categoryId">
+        <router-link :to="'category/' + item.categoryId" class="category-item">
           <span class="category-icon">
-            <img :src="proxy.globalInfo.getImageUrl + item.cover"
-                 v-if="item.cover" />
-            <img src="@/assets/default_img.png"
-                 v-else />
+            <img
+              :src="proxy.globalInfo.getImageUrl + item.cover"
+              v-if="item.cover"
+            />
+            <img src="@/assets/default_img.png" v-else />
           </span>
-          <span class="category-name"
-                :title="item.categoryName">{{item.categoryName}}</span>
+          <span class="category-name" :title="item.categoryName">{{
+            item.categoryName
+          }}</span>
           <span class="blog-count">{{ item.blogCount }}篇</span>
         </router-link>
       </div>
@@ -62,25 +72,22 @@
       <!--博客成员-->
       <div class="right-title team-user-title">
         <span>博客成员</span>
-        <router-link to="user"
-                     class="more">更多&gt;&gt;</router-link>
+        <router-link to="user" class="more">更多&gt;&gt;</router-link>
       </div>
-      <div v-for="item in userList">
-        <router-link :to="'user#'+item.userId"
-                     class="user-item">
+      <div v-for="item in userList" :key="item.userId">
+        <router-link :to="'user#' + item.userId" class="user-item">
           <span class="user-icon">
-            <img :src="proxy.globalInfo.getImageUrl + item.avatar"
-                 v-if="item.avatar" />
-            <img src="@/assets/default_avatar.png"
-                 v-else />
+            <img
+              :src="proxy.globalInfo.getImageUrl + item.avatar"
+              v-if="item.avatar"
+            />
+            <img src="@/assets/default_avatar.png" v-else />
           </span>
           <span class="user-info">
-            <span class="nick-name"
-                  :title="item.nickName">{{
+            <span class="nick-name" :title="item.nickName">{{
               item.nickName
             }}</span>
-            <span class="profession"
-                  :title="item.profession">{{
+            <span class="profession" :title="item.profession">{{
               item.profession
             }}</span>
           </span>
@@ -90,20 +97,18 @@
       <!--专题-->
       <div class="right-title special-title">
         <span>专题</span>
-        <router-link to="special"
-                     class="more">更多&gt;&gt;</router-link>
+        <router-link to="special" class="more">更多&gt;&gt;</router-link>
       </div>
-      <div v-for="(item, index) in specialList">
-        <router-link :to="'special/'+item.categoryId"
-                     class="category-item">
+      <div v-for="item in specialList" :key="item.categoryId">
+        <router-link :to="'special/' + item.categoryId" class="category-item">
           <span class="category-icon">
-            <img :src="proxy.globalInfo.getImageUrl + item.cover"
-                 v-if="item.cover" />
-            <img src="@/assets/default_img.png"
-                 v-else />
+            <img
+              :src="proxy.globalInfo.getImageUrl + item.cover"
+              v-if="item.cover"
+            />
+            <img src="@/assets/default_img.png" v-else />
           </span>
-          <span class="category-name"
-                title="EasyBlog">{{
+          <span class="category-name" title="EasyBlog">{{
             item.categoryName
           }}</span>
           <span class="blog-count">{{ item.blogCount }}篇</span>
@@ -114,10 +119,11 @@
 </template>
 
 <script setup>
-import "@/assets/scss/blog.list.scss"
-import "@/assets/scss/category.scss"
+import "@/assets/scss/blog.list.scss";
+import "@/assets/scss/category.scss";
 import { ref, getCurrentInstance } from "vue";
-
+import { useRouter } from "vue-router";
+const router = useRouter();
 const { proxy } = getCurrentInstance();
 
 const api = {
@@ -144,6 +150,9 @@ const loadBlogList = async (pageNo) => {
 };
 loadBlogList();
 
+const routeToBlog = (id) => {
+  router.push("blog/" + id);
+};
 const pageChange4BlogList = (pageNo) => {
   loadBlogList(pageNo);
 };
@@ -202,11 +211,11 @@ loacSpecialList();
 .home-body {
   display: flex;
   .container {
-    background: #fff;
     flex: 1;
     padding: 10px 20px;
   }
   .right {
+    border-radius: 10px;
     .team-user-title,
     .special-title {
       margin-top: 20px;

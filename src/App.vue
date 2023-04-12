@@ -2,7 +2,10 @@
   <div>
     <div class="top">
       <div class="top-container">
-        <div class="logo"><a href="">Yu Blog</a></div>
+        <div class="logo">
+          
+          <a href="">Yu Blog</a>
+        </div>
         <div class="nav">
           <span class="iconfont icon-blog"></span>
           <router-link to="/" :class="[currentPath == '/' ? 'active' : '']"
@@ -12,7 +15,7 @@
           <router-link
             to="/category"
             :class="[currentPath == '/category' ? 'active' : '']"
-            >分类专栏</router-link
+            >分类</router-link
           >
           <span class="iconfont icon-zhuanti"></span>
           <router-link
