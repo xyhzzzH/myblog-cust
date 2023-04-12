@@ -3,40 +3,32 @@
     <div class="blog-detail">
       <div class="blog-detail-container">
         <div class="container-content">
-          <div class="blog-title">{{blogInfo.title}}</div>
+          <div class="blog-title">{{ blogInfo.title }}</div>
           <div class="blog-info">
-            <div class="time">{{blogInfo.createTime}}</div>
-            <div class="nick-name">作者：<router-link :to="'../user#'+blogInfo.userId">{{blogInfo.nickName}}</router-link>
+            <div class="time">{{ blogInfo.createTime }}</div>
+            <div class="nick-name">作者：<router-link :to="'../user#' + blogInfo.userId">{{ blogInfo.nickName }}</router-link>
             </div>
-            <div class="category">分类专栏： <router-link :to="'../category/'+blogInfo.categoryId"
-                           v-if="blogInfo.categoryId">{{blogInfo.categoryName}}</router-link>
+            <div class="category">分类专栏： <router-link :to="'../category/' + blogInfo.categoryId"
+                v-if="blogInfo.categoryId">{{ blogInfo.categoryName }}</router-link>
               <span v-else>全部</span>
             </div>
           </div>
-          <div class="content"
-               id="content"
-               v-html="blogInfo.content"></div>
+          <div class="content" id="content" v-html="blogInfo.content"></div>
         </div>
         <!--  <div class="container-comment">
           <div class="comment-title">评论</div>
         </div> -->
       </div>
-      <div class="right"
-           id="right"
-           :style="{left:leftNum+'px'}">
-        <div class="container"
-             id="right-container"
-             :style="{'top':marginTop+'px'}">
+      <div class="right" id="right" :style="[{ left: leftNum + 'px' }, { top: marginTop + 'px' }]">
+        <div class="container" id="right-container">
           <div class="right-title toc-title">目录结构</div>
           <div class="toc-list">
-            <template v-if="tocArray.length==0">
+            <template v-if="tocArray.length == 0">
               <div class="no-data">未解析到目录</div>
             </template>
             <template v-else>
               <div v-for="item in tocArray" :key="item.id">
-                <a :href="'#'+item.id"
-                   class="toc-item"
-                   :style="{'padding-left':(item.level*15)+'px'}">{{item.title}}
+                <a :href="'#' + item.id" class="toc-item" :style="{ 'padding-left': (item.level * 15) + 'px' }">{{ item.title }}
                 </a>
               </div>
             </template>
@@ -44,22 +36,17 @@
           </div>
           <div class="right-title category-title">
             <span>分类专栏</span>
-            <a href="../category.html"
-               class="more">更多&gt;&gt;</a>
+            <a href="../category.html" class="more">更多&gt;&gt;</a>
           </div>
           <div v-for="(item, index) in categoryList" :key="index">
-            <a href="category/10000.html"
-               class="category-item">
+            <a href="category/10000.html" class="category-item">
               <span class="category-icon">
-                <img :src="proxy.globalInfo.getImageUrl + item.cover"
-                     v-if="item.cover" />
-                <img src="@/assets/default_img.png"
-                     v-else />
+                <img :src="proxy.globalInfo.getImageUrl + item.cover" v-if="item.cover" />
+                <img src="@/assets/default_img.png" v-else />
               </span>
-              <span class="category-name"
-                    title="EasyBlog">{{
-            item.categoryName
-          }}</span>
+              <span class="category-name" title="EasyBlog">{{
+                item.categoryName
+              }}</span>
               <span class="blog-count">{{ item.blogCount }}篇</span>
             </a>
           </div>
@@ -160,10 +147,17 @@ const highlightCode = () => {
   });
 }
 //获取右侧位置
-const marginTop = ref(0);
+const marginTop = ref(570);
 onMounted(() => {
   window.addEventListener('scroll', () => {
     var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+    console.log(scrollTop)
+    if (scrollTop < 400) {
+      marginTop.value = 570 - scrollTop;
+      return
+    }
+    marginTop.value = 200;
+
   })
 })
 </script>
@@ -172,23 +166,28 @@ onMounted(() => {
 .blog-detail {
   display: flex;
   position: relative;
+
   .right {
     position: fixed;
     width: 320px;
     padding: 0px 10px 10px 10px;
     border-radius: 10px;
+
     .container {
       width: 100%;
       background: #fff;
+
       .toc-list {
         max-height: 400px;
         overflow: auto;
+
         .no-data {
           text-align: center;
           color: rgb(148, 146, 146);
           line-height: 40px;
           font-size: 13px;
         }
+
         .toc-item {
           line-height: 30px;
           overflow: hidden;
@@ -197,6 +196,7 @@ onMounted(() => {
           cursor: pointer;
           color: #555666;
         }
+
         .toc-item:hover {
           color: #c94646;
         }

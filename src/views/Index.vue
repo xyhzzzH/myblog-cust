@@ -216,6 +216,7 @@ loacSpecialList();
   }
   .right {
     border-radius: 10px;
+    
     .team-user-title,
     .special-title {
       margin-top: 20px;

@@ -3,38 +3,19 @@
     <div class="top">
       <div class="top-container">
         <div class="logo">
-          
-          <a href="">Yu Blog</a>
+          <router-link to="/">Yu Blog</router-link>
         </div>
         <div class="nav">
           <span class="iconfont icon-blog"></span>
-          <router-link to="/" :class="[currentPath == '/' ? 'active' : '']"
-            >博客</router-link
-          >
+          <router-link to="/" :class="[currentPath == '/' ? 'active' : '']">博客</router-link>
           <span class="iconfont icon-fenlei"></span>
-          <router-link
-            to="/category"
-            :class="[currentPath == '/category' ? 'active' : '']"
-            >分类</router-link
-          >
+          <router-link to="/category" :class="[currentPath == '/category' ? 'active' : '']">分类</router-link>
           <span class="iconfont icon-zhuanti"></span>
-          <router-link
-            to="/special"
-            :class="[currentPath == '/special' ? 'active' : '']"
-            >专题</router-link
-          >
+          <router-link to="/special" :class="[currentPath == '/special' ? 'active' : '']">专题</router-link>
           <span class="iconfont icon-chengyuan"></span>
-          <router-link
-            to="/user"
-            :class="[currentPath == '/user' ? 'active' : '']"
-            >成员</router-link
-          >
+          <router-link to="/user" :class="[currentPath == '/user' ? 'active' : '']">成员</router-link>
           <span class="iconfont icon-liuyan"></span>
-          <router-link
-            to="/comment"
-            :class="[currentPath == '/comment' ? 'active' : '']"
-            >留言板</router-link
-          >
+          <router-link to="/comment" :class="[currentPath == '/comment' ? 'active' : '']">留言板</router-link>
         </div>
       </div>
       <div class="center-container">
@@ -59,8 +40,7 @@
     </div>
     <div class="footer" v-if="sysSetting.showIcp">
       <div>
-        <span
-          >©2021-{{ new Date().getFullYear() }} {{ sysSetting.icpDomain }} All
+        <span>©2021-{{ new Date().getFullYear() }} {{ sysSetting.icpDomain }} All
           rights reserved.
         </span>
         <a target="_blank" href="https://beian.miit.gov.cn/">{{
@@ -69,13 +49,10 @@
       </div>
       <div>
         <img src="@/assets/beian.png" />
-        <a
-          target="_blank"
-          :href="
-            'http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=' +
-            sysSetting.policeNo
-          "
-        >
+        <a target="_blank" :href="
+          'http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=' +
+          sysSetting.policeNo
+        ">
           鄂公网安备 {{ sysSetting.policeNo }}号
         </a>
       </div>
@@ -120,5 +97,4 @@ const loadSysInfo = async () => {
 loadSysInfo();
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
