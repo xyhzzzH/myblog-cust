@@ -22,7 +22,7 @@
         <div>Yu Blog</div>
         <div>想多了全是问题，做多了全是答案。</div>
       </div>
-      <span class="iconfont icon-xiangxia"></span>
+      <span class="iconfont icon-xiangxia" @click="turnBottom"></span>
     </div>
     <div class="body-container">
       <el-config-provider :message="config" size="default">
@@ -68,7 +68,6 @@ const { proxy } = getCurrentInstance();
 const config = reactive({
   max: 1,
 });
-
 const currentPath = ref("/");
 
 const initTitlt = () => {
@@ -95,6 +94,10 @@ const loadSysInfo = async () => {
   sysSetting.value = result.data;
 };
 loadSysInfo();
+const turnBottom = () =>{
+  document.documentElement.scrollTop = 600
+}
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>

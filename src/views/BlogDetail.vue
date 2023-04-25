@@ -147,13 +147,12 @@ const highlightCode = () => {
   });
 }
 //获取右侧位置
-const marginTop = ref(570);
+const marginTop = ref(700);
 onMounted(() => {
   window.addEventListener('scroll', () => {
     var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-    console.log(scrollTop)
     if (scrollTop < 400) {
-      marginTop.value = 570 - scrollTop;
+      marginTop.value = 700 - scrollTop;
       return
     }
     marginTop.value = 200;

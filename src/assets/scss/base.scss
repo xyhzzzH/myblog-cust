@@ -1,3 +1,6 @@
+:root{
+  --fontColor:#2a8532;
+}
 /* 设置滚动条的样式 */
 ::-webkit-scrollbar {
   /* width: 50px;
@@ -41,15 +44,14 @@ body {
 
   a {
     text-decoration: none;
-    color: #1890ff;
+    color: var(--fontColor);
     font-size: 14px;
   }
 
   .top {
     position: relative;
     width: 100%;
-    background: #fff;
-    height: 50vh;
+    height: 60vh;
     text-align: center;
     background-image: url(../image/shouye.jpg);
     background-repeat: no-repeat;
@@ -66,7 +68,7 @@ body {
 
       .logo {
         a {
-          color: #fff;
+          color: var(--fontColor);
           font-size: 25px;
           font-weight: bold;
           margin-left: 30px;
@@ -76,18 +78,18 @@ body {
       .nav {
         display: inline-block;
         font-size: 16px;
-        color: #fff;
+        color: var(--fontColor);
 
         a {
           text-decoration: none;
           padding-right: 20px;
           padding-left: 5px;
-          color: #fff;
+          color: var(--fontColor);
           font-weight: 400;
         }
 
         a.active {
-          color: #939393;
+          color: #201727;
         }
       }
 
@@ -99,17 +101,23 @@ body {
       top: 50%;
       left: 40%;
       font-weight: 500;
-      color: #fff;
+      color: var(--fontColor);
       font-size: 30px;
+      
 
     }
 
     .icon-xiangxia {
       font-size: 50px;
-      color: #fff;
+      color: var(--fontColor);
       position: absolute;
       top: 80%;
       left: calc(1912/2 - 25)px;
+    }
+    .icon-xiangxia:hover {
+      cursor: pointer;
+      transform: translate(0, 10px);
+      /* 鼠标悬浮时盒子上移10px */
     }
   }
 
