@@ -7,20 +7,40 @@
         </div>
         <div class="nav">
           <span class="iconfont icon-blog"></span>
-          <router-link to="/" :class="[currentPath == '/' ? 'active' : '']">博客</router-link>
+          <router-link to="/" :class="[currentPath == '/' ? 'active' : '']"
+            >博客</router-link
+          >
           <span class="iconfont icon-fenlei"></span>
-          <router-link to="/category" :class="[currentPath == '/category' ? 'active' : '']">分类</router-link>
+          <router-link
+            to="/category"
+            :class="[currentPath == '/category' ? 'active' : '']"
+            >分类</router-link
+          >
           <span class="iconfont icon-zhuanti"></span>
-          <router-link to="/special" :class="[currentPath == '/special' ? 'active' : '']">专题</router-link>
+          <router-link
+            to="/special"
+            :class="[currentPath == '/special' ? 'active' : '']"
+            >专题</router-link
+          >
           <span class="iconfont icon-chengyuan"></span>
-          <router-link to="/user" :class="[currentPath == '/user' ? 'active' : '']">成员</router-link>
+          <router-link
+            to="/user"
+            :class="[currentPath == '/user' ? 'active' : '']"
+            >成员</router-link
+          >
           <span class="iconfont icon-liuyan"></span>
-          <router-link to="/comment" :class="[currentPath == '/comment' ? 'active' : '']">留言板</router-link>
+          <router-link
+            to="/comment"
+            :class="[currentPath == '/comment' ? 'active' : '']"
+            >留言板</router-link
+          >
         </div>
       </div>
       <div class="center-container">
-        <div>Yu Blog</div>
-        <div>想多了全是问题，做多了全是答案。</div>
+        <div>
+          <div>Yu Blog</div>
+          <div>想多了全是问题，做多了全是答案。</div>
+        </div>
       </div>
       <span class="iconfont icon-xiangxia" @click="turnBottom"></span>
     </div>
@@ -40,7 +60,8 @@
     </div>
     <div class="footer" v-if="sysSetting.showIcp">
       <div>
-        <span>©2021-{{ new Date().getFullYear() }} {{ sysSetting.icpDomain }} All
+        <span
+          >©2021-{{ new Date().getFullYear() }} {{ sysSetting.icpDomain }} All
           rights reserved.
         </span>
         <a target="_blank" href="https://beian.miit.gov.cn/">{{
@@ -49,10 +70,13 @@
       </div>
       <div>
         <img src="@/assets/beian.png" />
-        <a target="_blank" :href="
-          'http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=' +
-          sysSetting.policeNo
-        ">
+        <a
+          target="_blank"
+          :href="
+            'http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=' +
+            sysSetting.policeNo
+          "
+        >
           鄂公网安备 {{ sysSetting.policeNo }}号
         </a>
       </div>
@@ -94,9 +118,9 @@ const loadSysInfo = async () => {
   sysSetting.value = result.data;
 };
 loadSysInfo();
-const turnBottom = () =>{
-  document.documentElement.scrollTop = 600
-}
+const turnBottom = () => {
+  document.documentElement.scrollTop = 600;
+};
 </script>
 
 <style lang="scss" scoped>

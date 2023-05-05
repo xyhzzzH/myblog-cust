@@ -2,6 +2,7 @@
   <div class="user-container">
     <div class="user-item"
          :id="item.userId"
+         :key="item.userId"
          v-for="item in userList">
       <div class="user-icon">
         <img :src="proxy.globalInfo.getImageUrl + item.avatar"
